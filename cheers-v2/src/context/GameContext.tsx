@@ -2,86 +2,72 @@ import {
   createContext,
   useContext,
   useState,
+  type ReactNode,
 } from "react";
-import type { ReactNode } from "react";
 
 import type { Player } from "../types/player";
-import type {
-  Card,
-  GameMode,
-} from "../types/card";
+import type { GameMode } from "../types/game";
 
 interface GameContextType {
+  playerCount: number;
+  setPlayerCount: (count: number) => void;
+
   players: Player[];
-  setPlayers: React.Dispatch<
-    React.SetStateAction<Player[]>
-  >;
+  setPlayers: (players: Player[]) => void;
+
+  mode: GameMode | null;
+  setMode: (mode: GameMode) => void;
 
   currentPlayer: Player | null;
-  setCurrentPlayer: React.Dispatch<
-    React.SetStateAction<Player | null>
-  >;
+  setCurrentPlayer: (player: Player | null) => void;
 
-  currentCard: Card | null;
-  setCurrentCard: React.Dispatch<
-    React.SetStateAction<Card | null>
-  >;
-
-  mode: GameMode;
-
-  setMode: React.Dispatch<
-    React.SetStateAction<GameMode>
-  >;
-
-  lastPlayerId: number | null;
-
-  setLastPlayerId: React.Dispatch<
-    React.SetStateAction<number | null>
-  >;
+  round: number;
+  setRound: (round: number) => void;
 }
 
-const GameContext =
-  createContext<GameContextType | null>(
-    null
-  );
+const GameContext = createContext<
+  GameContextType | undefined
+>(undefined);
+
+interface GameProviderProps {
+  children: ReactNode;
+}
 
 export function GameProvider({
   children,
-}: {
-  children: ReactNode;
-}) {
+}: GameProviderProps) {
+  const [playerCount, setPlayerCount] =
+    useState(4);
+
   const [players, setPlayers] =
     useState<Player[]>([]);
+
+  const [mode, setMode] =
+    useState<GameMode | null>(null);
 
   const [currentPlayer, setCurrentPlayer] =
     useState<Player | null>(null);
 
-  const [currentCard, setCurrentCard] =
-    useState<Card | null>(null);
-
-  const [mode, setMode] =
-    useState<GameMode>("late-night");
-
-  const [lastPlayerId, setLastPlayerId] =
-    useState<number | null>(null);
+  const [round, setRound] =
+    useState(1);
 
   return (
     <GameContext.Provider
       value={{
+        playerCount,
+        setPlayerCount,
+
         players,
         setPlayers,
-
-        currentPlayer,
-        setCurrentPlayer,
-
-        currentCard,
-        setCurrentCard,
 
         mode,
         setMode,
 
-        lastPlayerId,
-        setLastPlayerId,
+        currentPlayer,
+        setCurrentPlayer,
+
+        round,
+        setRound,
       }}
     >
       {children}
@@ -90,12 +76,11 @@ export function GameProvider({
 }
 
 export function useGame() {
-  const context =
-    useContext(GameContext);
+  const context = useContext(GameContext);
 
   if (!context) {
     throw new Error(
-      "useGame must be used inside GameProvider"
+      "useGame phải được dùng trong GameProvider."
     );
   }
 

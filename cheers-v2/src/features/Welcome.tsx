@@ -1,5 +1,7 @@
 import Button from "../components/Button";
 import Screen from "../components/Screen";
+import PageHeader from "../components/PageHeader";
+
 import logo from "../assets/logo.png";
 
 interface WelcomeProps {
@@ -10,27 +12,27 @@ export default function Welcome({
   onStart,
 }: WelcomeProps) {
   return (
-    <Screen
-      title="CHEERS"
-      subtitle="Game uống bia cùng hội bạn"
-    >
+    <Screen>
       <div className="mb-8 flex justify-center">
         <img
           src={logo}
-          alt="CHEERS Logo"
+          alt="CHEERS"
           className="h-24 w-24 object-contain"
         />
       </div>
 
-      <div className="space-y-8">
-        <Button onClick={onStart}>
-          BẮT ĐẦU
-        </Button>
+      <PageHeader
+        title="CHEERS"
+        subtitle="Game uống bia cùng hội bạn"
+      />
 
-        <p className="text-center text-sm text-zinc-500">
-          By: <span className="font-semibold">Vigo</span>
-        </p>
-      </div>
+      <Button onClick={onStart}>
+        BẮT ĐẦU
+      </Button>
+
+      <p className="mt-6 text-center text-sm text-zinc-500">
+        By: <span className="font-semibold">Vigo</span>
+      </p>
     </Screen>
   );
 }
