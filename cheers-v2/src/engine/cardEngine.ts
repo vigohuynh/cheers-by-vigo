@@ -1,46 +1,25 @@
-import type {
-  Card,
-  GameMode,
-} from "../types/card";
-
-import { lateNightCards } from "../data/lateNight";
-import { hardcoreCards } from "../data/hardcore";
-
-const usedCards = new Set<number>();
-
-export function resetCards() {
-  usedCards.clear();
-}
+import type { Card } from "../types/card";
 
 export function getRandomCard(
-  mode: GameMode
+  cards: Card[],
+  usedCardIds: number[]
 ): Card {
-  const deck =
-    mode === "late-night"
-      ? lateNightCards
-      : hardcoreCards;
-
-  if (deck.length === 0) {
-    throw new Error("Deck rỗng.");
+  if (cards.length === 0) {
+    throw new Error("Không có lá bài nào.");
   }
 
-  if (usedCards.size >= deck.length) {
-    resetCards();
-  }
-
-  const available = deck.filter(
-    (card) => !usedCards.has(card.id)
+  let availableCards = cards.filter(
+    (card) => !usedCardIds.includes(card.id)
   );
 
-  const random =
-    available[
-      Math.floor(
-        Math.random() *
-          available.length
-      )
-    ];
+  // Nếu đã dùng hết bài thì trộn lại bộ bài
+  if (availableCards.length === 0) {
+    availableCards = cards;
+  }
 
-  usedCards.add(random.id);
+  const randomIndex = Math.floor(
+    Math.random() * availableCards.length
+  );
 
-  return random;
+  return availableCards[randomIndex];
 }

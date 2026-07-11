@@ -1,30 +1,29 @@
 import type { Player } from "../types/player";
-import type {
-  Card,
-  GameMode,
-} from "../types/card";
+import type { Card } from "../types/card";
 
-import { getNextPlayer } from "./playerEngine";
+import { getRandomPlayer } from "./playerEngine";
 import { getRandomCard } from "./cardEngine";
 
-export interface TurnResult {
+export interface GameTurn {
   player: Player;
   card: Card;
 }
 
 export function nextTurn(
   players: Player[],
-  mode: GameMode,
-  lastPlayerId: number | null
-): TurnResult {
-  const player = getNextPlayer(
+  cards: Card[],
+  lastPlayerId: number | null,
+  usedCardIds: number[]
+): GameTurn {
+  const player = getRandomPlayer(
     players,
     lastPlayerId
   );
 
-  player.selectedCount++;
-
-  const card = getRandomCard(mode);
+  const card = getRandomCard(
+    cards,
+    usedCardIds
+  );
 
   return {
     player,

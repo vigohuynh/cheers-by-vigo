@@ -1,16 +1,11 @@
 import type { Player } from "../types/player";
 
-/**
- * Chọn người chơi tiếp theo
- * - Không chọn người vừa chơi
- * - Ưu tiên người có số lượt thấp nhất
- */
-export function getNextPlayer(
+export function getRandomPlayer(
   players: Player[],
   lastPlayerId: number | null
 ): Player {
   if (players.length === 0) {
-    throw new Error("Không có người chơi.");
+    throw new Error("Danh sách người chơi đang trống.");
   }
 
   if (players.length === 1) {
@@ -21,20 +16,9 @@ export function getNextPlayer(
     (player) => player.id !== lastPlayerId
   );
 
-  const minSelected = Math.min(
-    ...availablePlayers.map(
-      (player) => player.selectedCount
-    )
-  );
-
-  const candidates = availablePlayers.filter(
-    (player) =>
-      player.selectedCount === minSelected
-  );
-
   const randomIndex = Math.floor(
-    Math.random() * candidates.length
+    Math.random() * availablePlayers.length
   );
 
-  return candidates[randomIndex];
+  return availablePlayers[randomIndex];
 }

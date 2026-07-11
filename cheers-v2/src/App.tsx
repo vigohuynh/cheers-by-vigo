@@ -9,6 +9,9 @@ import Gameplay from "./features/Gameplay";
 
 import { useGame } from "./context/GameContext";
 
+import { GameSession } from "./engine/GameSession";
+import { cards } from "./data/cards";
+
 type Screen =
   | "welcome"
   | "player-setup"
@@ -22,19 +25,30 @@ export default function App() {
     useState<Screen>("welcome");
 
   const {
+    players,
     setPlayerCount,
     setPlayers,
     setMode,
-    setCurrentPlayer,
-    setRound,
+    session,
+    setSession,
   } = useGame();
+
+  function startGame() {
+    const newSession = new GameSession(
+      players,
+      cards
+    );
+
+    setSession(newSession);
+
+    setScreen("countdown");
+  }
 
   function restartGame() {
     setPlayerCount(4);
     setPlayers([]);
     setMode(null);
-    setCurrentPlayer(null);
-    setRound(1);
+    setSession(null);
 
     setScreen("welcome");
   }
@@ -74,9 +88,7 @@ export default function App() {
           onBack={() =>
             setScreen("name-setup")
           }
-          onNext={() =>
-            setScreen("countdown")
-          }
+          onNext={startGame}
         />
       )}
 
@@ -88,11 +100,13 @@ export default function App() {
         />
       )}
 
-      {screen === "gameplay" && (
-        <Gameplay
-          onRestart={restartGame}
-        />
-      )}
+      {screen === "gameplay" &&
+        session && (
+          <Gameplay
+            session={session}
+            onRestart={restartGame}
+          />
+        )}
     </>
   );
 }

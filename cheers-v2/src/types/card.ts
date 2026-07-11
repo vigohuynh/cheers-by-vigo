@@ -1,23 +1,14 @@
-export type CardType =
+export type CardCategory =
+  | "challenge"
   | "truth"
-  | "dare"
-  | "penalty"
-  | "special";
-
-export type GameMode =
-  | "late-night"
-  | "hardcore";
+  | "vote"
+  | "skill"
+  | "luck";
 
 export interface Card {
   id: number;
 
-  type: CardType;
+  content: string;
 
-  mode: GameMode;
-
-  title: string;
-
-  description: string;
-
-  drinks?: number;
+  category: CardCategory;
 }

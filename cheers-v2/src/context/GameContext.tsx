@@ -8,6 +8,8 @@ import {
 import type { Player } from "../types/player";
 import type { GameMode } from "../types/game";
 
+import { GameSession } from "../engine/GameSession";
+
 interface GameContextType {
   playerCount: number;
   setPlayerCount: (count: number) => void;
@@ -18,24 +20,21 @@ interface GameContextType {
   mode: GameMode | null;
   setMode: (mode: GameMode) => void;
 
-  currentPlayer: Player | null;
-  setCurrentPlayer: (player: Player | null) => void;
-
-  round: number;
-  setRound: (round: number) => void;
+  session: GameSession | null;
+  setSession: (session: GameSession | null) => void;
 }
 
-const GameContext = createContext<
-  GameContextType | undefined
->(undefined);
+const GameContext = createContext<GameContextType | undefined>(
+  undefined
+);
 
-interface GameProviderProps {
+interface Props {
   children: ReactNode;
 }
 
 export function GameProvider({
   children,
-}: GameProviderProps) {
+}: Props) {
   const [playerCount, setPlayerCount] =
     useState(4);
 
@@ -45,11 +44,8 @@ export function GameProvider({
   const [mode, setMode] =
     useState<GameMode | null>(null);
 
-  const [currentPlayer, setCurrentPlayer] =
-    useState<Player | null>(null);
-
-  const [round, setRound] =
-    useState(1);
+  const [session, setSession] =
+    useState<GameSession | null>(null);
 
   return (
     <GameContext.Provider
@@ -63,11 +59,8 @@ export function GameProvider({
         mode,
         setMode,
 
-        currentPlayer,
-        setCurrentPlayer,
-
-        round,
-        setRound,
+        session,
+        setSession,
       }}
     >
       {children}
