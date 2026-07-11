@@ -1,3 +1,7 @@
+export type GameMode =
+  | "drinking"
+  | "late-night";
+
 export type CardType =
   | "truth"
   | "dare"
@@ -8,10 +12,6 @@ export type Difficulty =
   | "easy"
   | "medium"
   | "hard";
-
-export type GameMode =
-  | "drinking"
-  | "late-night";
 
 export interface Card {
 
@@ -24,4 +24,5 @@ export interface Card {
   difficulty: Difficulty;
 
   text: string;
+
 }
