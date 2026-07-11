@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import Button from "../components/Button";
-import PageHeader from "../components/PageHeader";
 import Screen from "../components/Screen";
 
 import { GameSession } from "../engine/GameSession";
@@ -11,71 +10,104 @@ import type { Card } from "../types/card";
 
 interface GameplayProps {
   session: GameSession;
-  onRestart: () => void;
 }
 
 export default function Gameplay({
   session,
-  onRestart,
 }: GameplayProps) {
-  const [currentPlayer, setCurrentPlayer] =
+  const [player, setPlayer] =
     useState<Player | null>(null);
 
-  const [currentCard, setCurrentCard] =
+  const [card, setCard] =
     useState<Card | null>(null);
 
-  const [round, setRound] = useState(1);
+  const [round, setRound] =
+    useState(1);
 
-  function drawNextTurn() {
+  const [rolling, setRolling] =
+    useState(false);
+
+  const timerRef =
+    useRef<number | null>(null);
+
+  function finishTurn() {
     const turn = session.nextTurn();
 
-    setCurrentPlayer(turn.player);
-    setCurrentCard(turn.card);
+    setPlayer(turn.player);
+    setCard(turn.card);
     setRound(session.getRound());
+
+    setRolling(false);
+  }
+
+  function nextTurn() {
+    if (rolling) return;
+
+    setRolling(true);
+
+    const players =
+      session.getPlayers();
+
+    let index = 0;
+
+    const interval = window.setInterval(() => {
+      setPlayer(players[index]);
+
+      index++;
+
+      if (index >= players.length) {
+        index = 0;
+      }
+    }, 90);
+
+    timerRef.current = window.setTimeout(() => {
+      clearInterval(interval);
+
+      finishTurn();
+    }, 1200);
   }
 
   useEffect(() => {
-    drawNextTurn();
+    finishTurn();
+
+    return () => {
+      if (timerRef.current) {
+        clearTimeout(timerRef.current);
+      }
+    };
   }, []);
 
   return (
     <Screen>
-      <PageHeader
-        title="Gameplay"
-        subtitle={`Lượt ${round}`}
-      />
+      <div className="space-y-8 text-center">
 
-      <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-8">
-
-        <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">
-          ĐẾN LƯỢT
+        <p className="text-sm font-semibold uppercase tracking-[0.35em] text-zinc-500">
+          LƯỢT {round}
         </p>
 
-        <h2 className="mt-3 text-4xl font-bold text-red-500">
-          {currentPlayer?.name ?? "-"}
-        </h2>
+        <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-8">
 
-        <div className="my-8 border-t border-zinc-700" />
+          <h1 className="text-5xl font-extrabold text-red-500">
+            {player?.name ?? ""}
+          </h1>
 
-        <p className="text-xl leading-9 text-zinc-100">
-          {currentCard?.content ?? ""}
-        </p>
+          <div className="my-8 border-t border-zinc-800" />
 
-      </div>
+          <p className="min-h-[140px] text-xl leading-9 text-zinc-100">
+            {rolling
+              ? "🎲 Đang chọn người chơi..."
+              : card?.content ?? ""}
+          </p>
 
-      <div className="mt-8 flex gap-4">
-
-        <Button
-          variant="secondary"
-          onClick={onRestart}
-        >
-          KẾT THÚC
-        </Button>
+        </div>
 
         <Button
-          onClick={drawNextTurn}
+          disabled={rolling}
+          onClick={nextTurn}
         >
-          LƯỢT TIẾP
+          {rolling
+            ? "ĐANG CHỌN..."
+            : "ĐÃ XONG"}
         </Button>
 
       </div>

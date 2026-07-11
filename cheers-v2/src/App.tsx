@@ -28,7 +28,6 @@ export default function App() {
     players,
     setPlayerCount,
     setPlayers,
-    setMode,
     session,
     setSession,
   } = useGame();
@@ -42,15 +41,6 @@ export default function App() {
     setSession(newSession);
 
     setScreen("countdown");
-  }
-
-  function restartGame() {
-    setPlayerCount(4);
-    setPlayers([]);
-    setMode(null);
-    setSession(null);
-
-    setScreen("welcome");
   }
 
   return (
@@ -104,7 +94,6 @@ export default function App() {
         session && (
           <Gameplay
             session={session}
-            onRestart={restartGame}
           />
         )}
     </>

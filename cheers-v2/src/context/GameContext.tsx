@@ -18,7 +18,7 @@ interface GameContextType {
   setPlayers: (players: Player[]) => void;
 
   mode: GameMode | null;
-  setMode: (mode: GameMode) => void;
+  setMode: (mode: GameMode | null) => void;
 
   session: GameSession | null;
   setSession: (session: GameSession | null) => void;
@@ -28,15 +28,15 @@ const GameContext = createContext<GameContextType | undefined>(
   undefined
 );
 
-interface Props {
+interface GameProviderProps {
   children: ReactNode;
 }
 
 export function GameProvider({
   children,
-}: Props) {
+}: GameProviderProps) {
   const [playerCount, setPlayerCount] =
-    useState(4);
+    useState<number>(4);
 
   const [players, setPlayers] =
     useState<Player[]>([]);
@@ -68,12 +68,12 @@ export function GameProvider({
   );
 }
 
-export function useGame() {
+export function useGame(): GameContextType {
   const context = useContext(GameContext);
 
   if (!context) {
     throw new Error(
-      "useGame phải được dùng trong GameProvider."
+      "useGame must be used within GameProvider."
     );
   }
 

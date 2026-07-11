@@ -14,7 +14,7 @@ export default function Button({
   variant = "primary",
 }: ButtonProps) {
   const base =
-    "h-14 w-full rounded-2xl font-semibold transition-all duration-200 active:scale-95";
+    "h-16 w-full rounded-2xl text-lg font-bold transition-all duration-200 active:scale-95 disabled:opacity-50";
 
   const primary =
     "bg-red-600 text-white hover:bg-red-700";

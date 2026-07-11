@@ -44,11 +44,15 @@ export class GameSession {
     return result;
   }
 
-  getRound() {
+  getRound(): number {
     return this.round;
   }
 
-  getUsedCards() {
+  getPlayers(): Player[] {
+    return [...this.players];
+  }
+
+  getUsedCards(): number[] {
     return [...this.usedCardIds];
   }
 

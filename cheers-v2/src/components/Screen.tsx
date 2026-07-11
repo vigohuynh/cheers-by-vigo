@@ -8,10 +8,10 @@ export default function Screen({
   children,
 }: ScreenProps) {
   return (
-    <main className="flex min-h-screen items-center justify-center bg-zinc-950 px-6">
-      <section className="w-full max-w-md">
+    <main className="min-h-screen bg-zinc-950 text-white">
+      <div className="mx-auto flex min-h-screen w-full max-w-md flex-col justify-center px-6">
         {children}
-      </section>
+      </div>
     </main>
   );
 }
