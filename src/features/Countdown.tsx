@@ -1,17 +1,21 @@
 import { useEffect, useState } from "react";
 
-type CountdownProps = {
-  onFinish: () => void;
-};
+import Screen from "../components/Screen";
 
-export default function Countdown({ onFinish }: CountdownProps) {
+interface CountdownProps {
+  onFinish: () => void;
+}
+
+export default function Countdown({
+  onFinish,
+}: CountdownProps) {
   const [count, setCount] = useState(3);
 
   useEffect(() => {
     if (count === 0) {
       const timer = setTimeout(() => {
         onFinish();
-      }, 800);
+      }, 500);
 
       return () => clearTimeout(timer);
     }
@@ -24,18 +28,12 @@ export default function Countdown({ onFinish }: CountdownProps) {
   }, [count, onFinish]);
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-      <div className="text-center">
-
-        <div className="text-8xl font-black text-orange-500">
+    <Screen>
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <h1 className="text-8xl font-bold text-red-600">
           {count === 0 ? "GO!" : count}
-        </div>
-
-        <p className="mt-6 text-slate-400">
-          Chuẩn bị bắt đầu...
-        </p>
-
+        </h1>
       </div>
-    </div>
+    </Screen>
   );
 }

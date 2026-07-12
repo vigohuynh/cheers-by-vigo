@@ -1,16 +1,19 @@
-import { Card, GameMode } from "./card";
-import { Player } from "./player";
+import type { Player } from "./player";
+
+export type GameMode =
+  | "late-night"
+  | "hardcore";
 
 export interface GameState {
-
-  round: number;
-
-  mode: GameMode;
+  playerCount: number;
 
   players: Player[];
 
+  mode: GameMode | null;
+
   currentPlayer: Player | null;
 
-  currentCard: Card | null;
+  lastPlayerId: number | null;
 
+  round: number;
 }

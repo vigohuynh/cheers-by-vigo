@@ -1,42 +1,24 @@
-import { Player } from "../types/player";
+import type { Player } from "../types/player";
 
-/**
- * Chọn người chơi công bằng
- */
-export function getNextPlayer(
+export function getRandomPlayer(
   players: Player[],
-  lastPlayerId?: number
+  lastPlayerId: number | null
 ): Player {
-
   if (players.length === 0) {
-    throw new Error("Không có người chơi");
+    throw new Error("Danh sách người chơi đang trống.");
   }
 
-  let candidates = players;
-
-  // Không chọn người vừa chơi nếu còn người khác
-  if (lastPlayerId !== undefined && players.length > 1) {
-
-    const filtered = players.filter(
-      player => player.id !== lastPlayerId
-    );
-
-    if (filtered.length > 0) {
-      candidates = filtered;
-    }
+  if (players.length === 1) {
+    return players[0];
   }
 
-  const minSelected = Math.min(
-    ...candidates.map(player => player.selectedCount)
+  const availablePlayers = players.filter(
+    (player) => player.id !== lastPlayerId
   );
 
-  candidates = candidates.filter(
-    player => player.selectedCount === minSelected
+  const randomIndex = Math.floor(
+    Math.random() * availablePlayers.length
   );
 
-  const random =
-    Math.floor(Math.random() * candidates.length);
-
-  return candidates[random];
-
+  return availablePlayers[randomIndex];
 }

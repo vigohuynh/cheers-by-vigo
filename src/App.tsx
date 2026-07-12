@@ -7,93 +7,108 @@ import ModeSetup from "./features/ModeSetup";
 import Countdown from "./features/Countdown";
 import Gameplay from "./features/Gameplay";
 
+import { useGame } from "./context/GameContext";
+
+import { GameSession } from "./engine/GameSession";
+import { cards } from "./data/cards";
+
 type Screen =
   | "welcome"
-  | "players"
-  | "names"
-  | "mode"
+  | "player-setup"
+  | "name-setup"
+  | "mode-setup"
   | "countdown"
-  | "game";
+  | "gameplay";
 
-type GameMode = "drinking" | "late-night";
+export default function App() {
+  const [screen, setScreen] =
+    useState<Screen>("welcome");
 
-function App() {
-  const [screen, setScreen] = useState<Screen>("welcome");
+  const {
+    players,
+    setPlayerCount,
+    setPlayers,
+    setMode,
+    session,
+    setSession,
+  } = useGame();
 
-  const [playerCount, setPlayerCount] = useState(4);
+  function startGame() {
+    const newSession = new GameSession(
+      players,
+      cards
+    );
 
-  const [players, setPlayers] = useState<string[]>([]);
+    setSession(newSession);
 
-  const [mode, setMode] = useState<GameMode>("drinking");
+    setScreen("countdown");
+  }
 
-  const [currentPlayer, setCurrentPlayer] = useState("");
+  function restartGame() {
+    session?.reset();
 
-  switch (screen) {
-    case "welcome":
-      return (
+    setSession(null);
+    setPlayers([]);
+    setPlayerCount(4);
+    setMode(null);
+
+    setScreen("welcome");
+  }
+
+  return (
+    <>
+      {screen === "welcome" && (
         <Welcome
-          onStart={() => setScreen("players")}
+          onStart={() =>
+            setScreen("player-setup")
+          }
         />
-      );
+      )}
 
-    case "players":
-      return (
+      {screen === "player-setup" && (
         <PlayerSetup
           onNext={(count) => {
             setPlayerCount(count);
-            setScreen("names");
+            setScreen("name-setup");
           }}
         />
-      );
+      )}
 
-    case "names":
-      return (
+      {screen === "name-setup" && (
         <NameSetup
-          playerCount={playerCount}
-          onBack={() => setScreen("players")}
-          onNext={(playerList) => {
-            setPlayers(playerList);
-            setScreen("mode");
-          }}
+          onBack={() =>
+            setScreen("player-setup")
+          }
+          onNext={() =>
+            setScreen("mode-setup")
+          }
         />
-      );
+      )}
 
-    case "mode":
-      return (
+      {screen === "mode-setup" && (
         <ModeSetup
-          onBack={() => setScreen("names")}
-          onNext={(selectedMode) => {
-            setMode(selectedMode);
-
-            // Chọn ngẫu nhiên người chơi đầu tiên
-            const randomIndex = Math.floor(
-              Math.random() * players.length
-            );
-
-            setCurrentPlayer(players[randomIndex]);
-
-            setScreen("countdown");
-          }}
+          onBack={() =>
+            setScreen("name-setup")
+          }
+          onNext={startGame}
         />
-      );
+      )}
 
-    case "countdown":
-      return (
+      {screen === "countdown" && (
         <Countdown
-          onFinish={() => setScreen("game")}
+          onFinish={() =>
+            setScreen("gameplay")
+          }
         />
-      );
+      )}
 
-    case "game":
-      return (
-        <Gameplay
-          playerName={currentPlayer}
-        />
-      );
-
-    default:
-      return null;
-  }
+      {screen === "gameplay" &&
+        session && (
+          <Gameplay
+            session={session}
+            onRestart={restartGame}
+          />
+        )}
+    </>
+  );
 }
-
-export default App;

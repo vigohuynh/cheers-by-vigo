@@ -1,88 +1,80 @@
 import { useState } from "react";
 
-type GameMode = "drinking" | "late-night";
+import Button from "../components/Button";
+import PageHeader from "../components/PageHeader";
+import Screen from "../components/Screen";
+import SelectionCard from "../components/SelectionCard";
 
-type ModeSetupProps = {
+import { useGame } from "../context/GameContext";
+
+import type { GameMode } from "../types/game";
+
+interface ModeSetupProps {
   onBack: () => void;
-  onNext: (mode: GameMode) => void;
-};
+  onNext: () => void;
+}
 
 export default function ModeSetup({
   onBack,
   onNext,
 }: ModeSetupProps) {
+  const { setMode } = useGame();
 
-  const [mode, setMode] = useState<GameMode>("drinking");
+  const [selectedMode, setSelectedMode] =
+    useState<GameMode>("late-night");
+
+  function handleNext() {
+    setMode(selectedMode);
+    onNext();
+  }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6">
+    <Screen>
+      <PageHeader
+        title="Chọn chế độ"
+        subtitle="Lựa chọn cách chơi phù hợp với nhóm của bạn"
+      />
 
-      <div className="w-full max-w-md rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl p-8">
+      <div className="space-y-5">
 
-        <h1 className="text-3xl font-bold text-center">
-          🍻 Chọn chế độ chơi
-        </h1>
+        <SelectionCard
+          icon="🌙"
+          title="Late Night"
+          subtitle="Vui vẻ, cân bằng, phù hợp mọi cuộc chơi."
+          selected={selectedMode === "late-night"}
+          onClick={() =>
+            setSelectedMode("late-night")
+          }
+        />
 
-        <p className="text-slate-400 text-center mt-2">
-          Hãy chọn chế độ phù hợp với nhóm của bạn
-        </p>
-
-        <div className="mt-8 space-y-4">
-
-          <button
-            onClick={() => setMode("drinking")}
-            className={`w-full rounded-2xl p-5 border transition ${
-              mode === "drinking"
-                ? "border-orange-500 bg-orange-500/20"
-                : "border-slate-700 bg-slate-800"
-            }`}
-          >
-            <div className="text-2xl">🍺 Drinking</div>
-
-            <div className="text-sm text-slate-400 mt-2">
-              Truth • Dare • Drink • Mini Game • Chaos
-            </div>
-          </button>
-
-          <button
-            onClick={() => setMode("late-night")}
-            className={`w-full rounded-2xl p-5 border transition ${
-              mode === "late-night"
-                ? "border-pink-500 bg-pink-500/20"
-                : "border-slate-700 bg-slate-800"
-            }`}
-          >
-            <div className="text-2xl">
-              🌙 Late Night
-            </div>
-
-            <div className="text-sm text-slate-400 mt-2">
-              Chỉ dành cho người từ 18 tuổi trở lên
-            </div>
-          </button>
-
-        </div>
-
-        <div className="flex gap-4 mt-8">
-
-          <button
-            onClick={onBack}
-            className="flex-1 rounded-xl bg-slate-700 py-3 font-bold"
-          >
-            ← Quay lại
-          </button>
-
-          <button
-            onClick={() => onNext(mode)}
-            className="flex-1 rounded-xl bg-gradient-to-r from-orange-500 to-pink-500 py-3 font-bold"
-          >
-            BẮT ĐẦU
-          </button>
-
-        </div>
+        <SelectionCard
+          icon="🔥"
+          title="Hardcore"
+          subtitle="Thử thách nhiều hơn dành cho hội chơi hết mình."
+          selected={selectedMode === "hardcore"}
+          onClick={() =>
+            setSelectedMode("hardcore")
+          }
+        />
 
       </div>
 
-    </div>
+      <div className="mt-8 flex gap-4">
+
+        <Button
+          variant="secondary"
+          onClick={onBack}
+        >
+          QUAY LẠI
+        </Button>
+
+        <Button
+          onClick={handleNext}
+        >
+          BẮT ĐẦU GAME
+        </Button>
+
+      </div>
+    </Screen>
   );
 }

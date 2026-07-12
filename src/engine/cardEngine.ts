@@ -1,83 +1,25 @@
-import { cards } from "../data/cards";
-
-import {
-  Card,
-  Difficulty,
-  GameMode,
-} from "../types/card";
-
-import {
-  DRINKING_DIFFICULTY,
-  LATE_NIGHT_DIFFICULTY,
-} from "../constants/game";
-
-const usedCards = new Set<number>();
-
-function randomDifficulty(
-  mode: GameMode
-): Difficulty {
-
-  const random = Math.random() * 100;
-
-  const rate =
-    mode === "drinking"
-      ? DRINKING_DIFFICULTY
-      : LATE_NIGHT_DIFFICULTY;
-
-  if (random < rate.easy) {
-    return "easy";
-  }
-
-  if (random < rate.easy + rate.medium) {
-    return "medium";
-  }
-
-  return "hard";
-
-}
+import type { Card } from "../types/card";
 
 export function getRandomCard(
-
-  mode: GameMode,
-
-  type: "truth" | "dare"
-
+  cards: Card[],
+  usedCardIds: number[]
 ): Card {
-
-  const difficulty =
-    randomDifficulty(mode);
-
-  let available = cards.filter(card =>
-
-    card.mode === mode &&
-    card.type === type &&
-    card.difficulty === difficulty &&
-    !usedCards.has(card.id)
-
-  );
-
-  if (available.length === 0) {
-
-    usedCards.clear();
-
-    available = cards.filter(card =>
-
-      card.mode === mode &&
-      card.type === type &&
-      card.difficulty === difficulty
-
-    );
-
+  if (cards.length === 0) {
+    throw new Error("Không có lá bài nào.");
   }
 
-  const random = Math.floor(
-    Math.random() * available.length
+  let availableCards = cards.filter(
+    (card) => !usedCardIds.includes(card.id)
   );
 
-  const selected = available[random];
+  // Nếu đã dùng hết bài thì trộn lại bộ bài
+  if (availableCards.length === 0) {
+    availableCards = cards;
+  }
 
-  usedCards.add(selected.id);
+  const randomIndex = Math.floor(
+    Math.random() * availableCards.length
+  );
 
-  return selected;
-
+  return availableCards[randomIndex];
 }

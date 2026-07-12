@@ -27,7 +27,11 @@ export class GameSession {
     this.cards = cards;
   }
 
-  nextTurn(): TurnResult {
+  nextTurn(): TurnResult | null {
+    if (this.isFinished()) {
+      return null;
+    }
+
     const result = nextTurn(
       this.players,
       this.cards,
@@ -44,16 +48,20 @@ export class GameSession {
     return result;
   }
 
-  getRound(): number {
-    return this.round;
-  }
-
   getPlayers(): Player[] {
     return [...this.players];
   }
 
+  getRound(): number {
+    return this.round;
+  }
+
   getUsedCards(): number[] {
     return [...this.usedCardIds];
+  }
+
+  isFinished(): boolean {
+    return this.usedCardIds.length >= this.cards.length;
   }
 
   reset() {

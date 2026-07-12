@@ -1,81 +1,78 @@
 import { useState } from "react";
 
-type NameSetupProps = {
-  playerCount: number;
+import Button from "../components/Button";
+import PageHeader from "../components/PageHeader";
+import Screen from "../components/Screen";
+import TextInput from "../components/TextInput";
+
+import { useGame } from "../context/GameContext";
+import type { Player } from "../types/player";
+
+interface NameSetupProps {
   onBack: () => void;
-  onNext: (players: string[]) => void;
-};
+  onNext: () => void;
+}
 
 export default function NameSetup({
-  playerCount,
   onBack,
   onNext,
 }: NameSetupProps) {
-  const [players, setPlayers] = useState<string[]>(
+  const { playerCount, setPlayers } = useGame();
+
+  const [names, setNames] = useState<string[]>(
     Array(playerCount).fill("")
   );
 
-  const handleChange = (index: number, value: string) => {
-    const newPlayers = [...players];
-    newPlayers[index] = value;
-    setPlayers(newPlayers);
-  };
+  function handleChange(index: number, value: string) {
+    const updated = [...names];
+    updated[index] = value;
+    setNames(updated);
+  }
 
-  const handleNext = () => {
-    const result = players.map((p, index) =>
-      p.trim() === "" ? `Người chơi ${index + 1}` : p.trim()
-    );
+  function handleNext() {
+    const players: Player[] = names.map((name, index) => ({
+      id: index + 1,
+      name: name.trim() || `Người chơi ${index + 1}`,
+      selectedCount: 0,
+      drinkCount: 0,
+    }));
 
-    onNext(result);
-  };
+    setPlayers(players);
+    onNext();
+  }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6">
-      <div className="w-full max-w-md rounded-3xl bg-slate-900 border border-slate-800 shadow-2xl p-8">
+    <Screen>
+      <PageHeader
+        title="Tên người chơi"
+        subtitle="Nhập tên tất cả người tham gia"
+      />
 
-        <h1 className="text-3xl font-bold text-center">
-          👥 Nhập tên người chơi
-        </h1>
-
-        <div className="mt-8 space-y-4">
-
-          {players.map((player, index) => (
-            <div key={index}>
-              <label className="block text-slate-300 mb-2">
-                Người chơi {index + 1}
-              </label>
-
-              <input
-                type="text"
-                value={player}
-                placeholder={`Người chơi ${index + 1}`}
-                onChange={(e) => handleChange(index, e.target.value)}
-                className="w-full rounded-xl bg-slate-800 border border-slate-700 px-4 py-3 text-white outline-none focus:border-orange-500"
-              />
-            </div>
-          ))}
-
-        </div>
-
-        <div className="flex gap-4 mt-8">
-
-          <button
-            onClick={onBack}
-            className="flex-1 rounded-xl bg-slate-700 py-3 font-bold"
-          >
-            ← Quay lại
-          </button>
-
-          <button
-            onClick={handleNext}
-            className="flex-1 rounded-xl bg-gradient-to-r from-orange-500 to-pink-500 py-3 font-bold"
-          >
-            Tiếp tục →
-          </button>
-
-        </div>
-
+      <div className="space-y-4">
+        {names.map((name, index) => (
+          <TextInput
+            key={index}
+            value={name}
+            placeholder={`Người chơi ${index + 1}`}
+            onChange={(value) =>
+              handleChange(index, value)
+            }
+          />
+        ))}
       </div>
-    </div>
+
+      <div className="mt-8 flex gap-4">
+        <Button
+          variant="secondary"
+          onClick={onBack}
+        >
+          QUAY LẠI
+        </Button>
+
+        <Button onClick={handleNext}>
+          TIẾP TỤC
+        </Button>
+      </div>
+    </Screen>
   );
 }

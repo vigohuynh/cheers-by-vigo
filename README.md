@@ -1,89 +1,75 @@
-# 🍻 CHEERS by Vigo
+# React + TypeScript + Vite
 
-CHEERS là ứng dụng Drinking Game được phát triển bằng React + TypeScript.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Mục tiêu của dự án là xây dựng một trò chơi uống cùng bạn bè hiện đại, chạy hoàn toàn offline và có thể phát hành trên iPhone và Android.
+Currently, two official plugins are available:
 
----
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## ✨ Tính năng
+## React Compiler
 
-- 🍺 Drinking Mode
-- 🌙 Late Night Mode (18+)
-- ❤️ Truth
-- 🔥 Dare
-- 🎲 Mini Game
-- ⚡ Chaos
-- 👥 4 - 8 người chơi
-- 📱 Tối ưu cho điện thoại
-- 💾 Chạy hoàn toàn Offline
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
----
+## Expanding the ESLint configuration
 
-## 🛠 Công nghệ
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- React
-- TypeScript
-- Vite
-- Tailwind CSS
-- Git
-- GitHub
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
----
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-## 📂 Cấu trúc dự án
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
-```text
-src/
-├── assets/
-├── components/
-├── constants/
-├── data/
-├── engine/
-├── features/
-├── hooks/
-├── types/
-├── utils/
-└── App.tsx
 ```
 
----
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-## 🚀 Roadmap
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
-### v0.2.0
-- Gameplay hoàn chỉnh
-- Fair Player Engine
-- Card Engine
-- Event Engine
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
-### v0.3.0
-- 200+ câu hỏi
-- Mini Game
-- Chaos
-
-### v0.4.0
-- Animation
-- Sound Effect
-
-### v0.5.0
-- Statistics
-- History
-- Achievement
-
-### v1.0.0
-- Phát hành chính thức
-
----
-
-## 👨‍💻 Tác giả
-
-**Vigo**
-
-GitHub:
-
-https://github.com/vigohuynh
-
----
-
-Made with ❤️ in Vietnam.
+```

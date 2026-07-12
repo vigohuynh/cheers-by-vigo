@@ -1,53 +1,29 @@
-import { Card } from "../types/card";
+import type { Card } from "../types/card";
 
 export const cards: Card[] = [
-
   {
     id: 1,
-    mode: "drinking",
-    type: "truth",
-    difficulty: "easy",
-    text: "Ai trong nhóm khiến bạn cười nhiều nhất?"
+    content: "Kể tên 5 loại bia.",
+    category: "challenge",
   },
-
   {
     id: 2,
-    mode: "drinking",
-    type: "truth",
-    difficulty: "medium",
-    text: "Bạn từng nói dối ai trong nhóm chưa?"
+    content: "Người nhỏ tuổi nhất uống một ngụm.",
+    category: "vote",
   },
-
   {
     id: 3,
-    mode: "drinking",
-    type: "truth",
-    difficulty: "hard",
-    text: "Điều bí mật nhất bạn chưa từng kể là gì?"
+    content: "Kể lần say đáng nhớ nhất của bạn.",
+    category: "truth",
   },
-
   {
     id: 4,
-    mode: "drinking",
-    type: "dare",
-    difficulty: "easy",
-    text: "Hát 10 giây."
+    content: "Đổi chỗ ngồi với người bên trái.",
+    category: "skill",
   },
-
   {
     id: 5,
-    mode: "drinking",
-    type: "dare",
-    difficulty: "medium",
-    text: "Nhảy trong 20 giây."
+    content: "Bốc thăm chọn một người cùng uống.",
+    category: "luck",
   },
-
-  {
-    id: 6,
-    mode: "drinking",
-    type: "dare",
-    difficulty: "hard",
-    text: "Gọi video cho một người và hát Happy Birthday."
-  }
-
 ];
