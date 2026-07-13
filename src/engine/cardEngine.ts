@@ -1,20 +1,21 @@
 import type { Card } from "../types/card";
+import type { CardType } from "../types/card";
 
 export function getRandomCard(
   cards: Card[],
+  type: CardType,
   usedCardIds: number[]
 ): Card {
-  if (cards.length === 0) {
-    throw new Error("Không có lá bài nào.");
-  }
-
-  let availableCards = cards.filter(
-    (card) => !usedCardIds.includes(card.id)
+  const availableCards = cards.filter(
+    (card) =>
+      card.type === type &&
+      !usedCardIds.includes(card.id)
   );
 
-  // Nếu đã dùng hết bài thì trộn lại bộ bài
   if (availableCards.length === 0) {
-    availableCards = cards;
+    throw new Error(
+      `Không còn câu hỏi loại "${type}".`
+    );
   }
 
   const randomIndex = Math.floor(

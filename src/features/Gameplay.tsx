@@ -51,6 +51,7 @@ export default function Gameplay({
     }
 
     setPlayer(turn.player);
+
     setRound(session.getRound());
 
     setTimeout(() => {
@@ -64,9 +65,11 @@ export default function Gameplay({
     if (rolling || finished) return;
 
     setRolling(true);
+
     setShowCard(false);
 
-    const players = session.getPlayers();
+    const players =
+      session.getPlayers();
 
     let index = 0;
 
@@ -107,21 +110,23 @@ export default function Gameplay({
     return (
       <Screen>
         <div className="space-y-8 text-center">
+
           <h1 className="text-6xl">
             🎉
           </h1>
 
-          <h2 className="text-4xl font-bold">
+          <h2 className="text-5xl font-extrabold">
             HẾT CÂU HỎI
           </h2>
 
-          <p className="text-zinc-400">
+          <p className="text-lg text-zinc-400">
             Cảm ơn mọi người đã chơi!
           </p>
 
           <Button onClick={onRestart}>
             CHƠI LẠI
           </Button>
+
         </div>
       </Screen>
     );
@@ -129,14 +134,16 @@ export default function Gameplay({
 
   return (
     <Screen>
-      <div className="space-y-8 text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.35em] text-zinc-500">
+      <div className="space-y-10 text-center">
+
+        <p className="text-sm font-semibold uppercase tracking-[0.45em] text-zinc-500">
           LƯỢT {round}
         </p>
 
-        <div className="rounded-3xl border border-zinc-800 bg-zinc-900 p-8 shadow-xl">
+        <div className="rounded-[32px] border border-zinc-700 bg-zinc-900 p-10 shadow-2xl">
+
           <h1
-            className={`text-5xl font-extrabold text-red-500 transition-all duration-300 ${
+            className={`text-3xl font-black text-red-500 transition-all duration-300 ${
               rolling
                 ? "scale-95 opacity-70"
                 : "scale-100 opacity-100"
@@ -145,13 +152,13 @@ export default function Gameplay({
             {player?.name ?? ""}
           </h1>
 
-          <div className="my-8 border-t border-zinc-800" />
+          <div className="my-6 border-t border-zinc-700" />
 
           <div
-            className={`min-h-[140px] transition-all duration-300 ${
+            className={`flex min-h-[200px] items-center justify-center transition-all duration-300 ${
               showCard
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-2"
+                ? "translate-y-0 opacity-100"
+                : "translate-y-2 opacity-0"
             }`}
           >
             {rolling ? (
@@ -159,21 +166,27 @@ export default function Gameplay({
                 🎲 Đang chọn người chơi...
               </p>
             ) : (
-              <p className="text-xl leading-9 text-zinc-100">
+              <p className="max-w-[90%] text-center text-2xl font-medium leading-10 text-zinc-100">
                 {card?.content ?? ""}
               </p>
             )}
           </div>
+
         </div>
 
-        <Button
-          onClick={nextTurn}
-          disabled={rolling}
-        >
-          {rolling
-            ? "ĐANG CHỌN..."
-            : "ĐÃ XONG"}
-        </Button>
+        <div className="pt-2">
+
+          <Button
+            onClick={nextTurn}
+            disabled={rolling}
+          >
+            {rolling
+              ? "ĐANG CHỌN..."
+              : "ĐÃ XONG"}
+          </Button>
+
+        </div>
+
       </div>
     </Screen>
   );

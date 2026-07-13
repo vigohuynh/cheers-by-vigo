@@ -1,14 +1,16 @@
-export type CardCategory =
-  | "challenge"
+export type CardType =
   | "truth"
-  | "vote"
-  | "skill"
-  | "luck";
+  | "dare"
+  | "random";
 
 export interface Card {
   id: number;
 
+  type: CardType;
+
   content: string;
 
-  category: CardCategory;
+  voice?: string;
+
+  sound?: string;
 }

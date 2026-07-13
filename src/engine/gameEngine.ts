@@ -1,32 +1,21 @@
-import type { Player } from "../types/player";
-import type { Card } from "../types/card";
+import { GAME_CONFIG } from "../config/gameConfig";
 
-import { getRandomPlayer } from "./playerEngine";
-import { getRandomCard } from "./cardEngine";
+import type { TurnType } from "../types/game";
 
-export interface GameTurn {
-  player: Player;
-  card: Card;
-}
+export function getRandomTurnType(): TurnType {
+  const random = Math.random() * 100;
 
-export function nextTurn(
-  players: Player[],
-  cards: Card[],
-  lastPlayerId: number | null,
-  usedCardIds: number[]
-): GameTurn {
-  const player = getRandomPlayer(
-    players,
-    lastPlayerId
-  );
+  if (random < GAME_CONFIG.truthChance) {
+    return "truth";
+  }
 
-  const card = getRandomCard(
-    cards,
-    usedCardIds
-  );
+  if (
+    random <
+    GAME_CONFIG.truthChance +
+      GAME_CONFIG.dareChance
+  ) {
+    return "dare";
+  }
 
-  return {
-    player,
-    card,
-  };
+  return "random";
 }

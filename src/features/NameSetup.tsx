@@ -23,21 +23,29 @@ export default function NameSetup({
     Array(playerCount).fill("")
   );
 
-  function handleChange(index: number, value: string) {
+  function handleChange(
+    index: number,
+    value: string
+  ) {
     const updated = [...names];
     updated[index] = value;
     setNames(updated);
   }
 
   function handleNext() {
-    const players: Player[] = names.map((name, index) => ({
-      id: index + 1,
-      name: name.trim() || `Người chơi ${index + 1}`,
-      selectedCount: 0,
-      drinkCount: 0,
-    }));
+    const players: Player[] = names.map(
+      (name, index) => ({
+        id: index + 1,
+        name:
+          name.trim() ||
+          `Người chơi ${index + 1}`,
+        selectedCount: 0,
+        drinkCount: 0,
+      })
+    );
 
     setPlayers(players);
+
     onNext();
   }
 
@@ -48,20 +56,31 @@ export default function NameSetup({
         subtitle="Nhập tên tất cả người tham gia"
       />
 
-      <div className="space-y-4">
+      <div className="mt-8 space-y-5">
+
         {names.map((name, index) => (
-          <TextInput
+          <div
             key={index}
-            value={name}
-            placeholder={`Người chơi ${index + 1}`}
-            onChange={(value) =>
-              handleChange(index, value)
-            }
-          />
+            className="space-y-2"
+          >
+            <p className="text-sm font-semibold text-zinc-400">
+              Người chơi {index + 1}
+            </p>
+
+            <TextInput
+              value={name}
+              placeholder="Nhập tên..."
+              onChange={(value) =>
+                handleChange(index, value)
+              }
+            />
+          </div>
         ))}
+
       </div>
 
-      <div className="mt-8 flex gap-4">
+      <div className="mt-10 flex gap-4">
+
         <Button
           variant="secondary"
           onClick={onBack}
@@ -69,9 +88,12 @@ export default function NameSetup({
           QUAY LẠI
         </Button>
 
-        <Button onClick={handleNext}>
+        <Button
+          onClick={handleNext}
+        >
           TIẾP TỤC
         </Button>
+
       </div>
     </Screen>
   );

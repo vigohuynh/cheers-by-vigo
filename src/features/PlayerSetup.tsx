@@ -26,7 +26,7 @@ export default function PlayerSetup({
         subtitle="Chọn số lượng người tham gia"
       />
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="mt-8 grid grid-cols-2 gap-5">
         {playerOptions.map((count) => (
           <SelectionCard
             key={count}
@@ -42,7 +42,7 @@ export default function PlayerSetup({
         ))}
       </div>
 
-      <div className="mt-8">
+      <div className="mt-10">
         <Button
           onClick={() =>
             onNext(selectedCount)

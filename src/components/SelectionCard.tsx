@@ -1,48 +1,49 @@
 interface SelectionCardProps {
+  icon: string;
   title: string;
   subtitle?: string;
-  icon?: string;
   selected?: boolean;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 export default function SelectionCard({
+  icon,
   title,
   subtitle,
-  icon,
   selected = false,
   onClick,
 }: SelectionCardProps) {
   return (
     <button
+      type="button"
       onClick={onClick}
       className={`
         w-full
-        rounded-2xl
+        rounded-3xl
         border
         p-6
+        text-center
         transition-all
         duration-200
+        active:scale-[0.98]
 
         ${
           selected
-            ? "border-red-600 bg-red-600/10"
-            : "border-zinc-800 bg-zinc-900 hover:border-red-500"
+            ? "border-red-500 bg-red-500/10 shadow-xl shadow-red-500/10"
+            : "border-zinc-700 bg-zinc-900 hover:border-zinc-500"
         }
       `}
     >
-      {icon && (
-        <div className="mb-4 text-4xl">
-          {icon}
-        </div>
-      )}
+      <div className="mb-4 text-4xl">
+        {icon}
+      </div>
 
-      <h2 className="text-xl font-bold text-white">
+      <h3 className="text-lg font-bold text-white">
         {title}
-      </h2>
+      </h3>
 
       {subtitle && (
-        <p className="mt-2 text-sm text-zinc-400">
+        <p className="mt-2 text-sm leading-6 text-zinc-400">
           {subtitle}
         </p>
       )}
