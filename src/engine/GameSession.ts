@@ -6,16 +6,22 @@ import { getRandomPlayer } from "./playerEngine";
 import { getRandomCard } from "./cardEngine";
 import { getRandomTurnType } from "./gameEngine";
 
+const TURN_TYPES: TurnType[] = [
+  "truth",
+  "dare",
+  "random",
+];
+
 export class GameSession {
   private players: Player[];
 
   private cards: Card[];
 
-  private usedTruthIds: number[] = [];
-
-  private usedDareIds: number[] = [];
-
-  private usedRandomIds: number[] = [];
+  private usedCardIds: Record<TurnType, number[]> = {
+    truth: [],
+    dare: [],
+    random: [],
+  };
 
   private lastPlayerId: number | null = null;
 
@@ -52,31 +58,60 @@ export class GameSession {
     return this.currentTurnType;
   }
 
-  drawCard(): Card {
-    if (!this.currentTurnType) {
-      throw new Error(
-        "TurnType chưa được chọn."
+  private getUsedIds(type: TurnType): number[] {
+    return this.usedCardIds[type];
+  }
+
+  private getAvailableTurnTypes(): TurnType[] {
+    return TURN_TYPES.filter((type) => {
+      const usedIds = this.getUsedIds(type);
+
+      return this.cards.some(
+        (card) =>
+          card.type === type &&
+          !usedIds.includes(card.id)
       );
+    });
+  }
+
+  drawCard(): Card | null {
+    if (!this.currentTurnType) {
+      return null;
     }
 
-    const usedIds =
-      this.currentTurnType === "truth"
-        ? this.usedTruthIds
-        : this.currentTurnType === "dare"
-        ? this.usedDareIds
-        : this.usedRandomIds;
+    const availableTurnTypes =
+      this.getAvailableTurnTypes();
 
-    this.currentCard = getRandomCard(
+    if (availableTurnTypes.length === 0) {
+      this.currentCard = null;
+      return null;
+    }
+
+    if (!availableTurnTypes.includes(this.currentTurnType)) {
+      const randomIndex = Math.floor(
+        Math.random() * availableTurnTypes.length
+      );
+
+      this.currentTurnType =
+        availableTurnTypes[randomIndex];
+    }
+
+    const usedIds = this.getUsedIds(
+      this.currentTurnType
+    );
+
+    const card = getRandomCard(
       this.cards,
       this.currentTurnType,
       usedIds
     );
 
-    usedIds.push(this.currentCard.id);
+    this.currentCard = card;
+    usedIds.push(card.id);
 
     this.round++;
 
-    return this.currentCard;
+    return card;
   }
 
   getPlayers(): Player[] {
@@ -100,9 +135,11 @@ export class GameSession {
   }
 
   reset(): void {
-    this.usedTruthIds = [];
-    this.usedDareIds = [];
-    this.usedRandomIds = [];
+    this.usedCardIds = {
+      truth: [],
+      dare: [],
+      random: [],
+    };
 
     this.currentPlayer = null;
     this.currentTurnType = null;

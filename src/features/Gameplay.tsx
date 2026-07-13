@@ -44,6 +44,12 @@ export default function Gameplay({
     const nextTurnType = session.selectTurnType();
     const nextCard = session.drawCard();
 
+    if (!nextCard) {
+      setFinished(true);
+      setRolling(false);
+      return;
+    }
+
     setPlayer(nextPlayer);
     setTurnType(nextTurnType);
     setRound(session.getRound());
