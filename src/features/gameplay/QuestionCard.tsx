@@ -13,10 +13,10 @@ export default function QuestionCard({
 }: QuestionCardProps) {
   return (
     <div
-      className={`flex min-h-[220px] items-center justify-center transition-all duration-300 ${
+      className={`flex min-h-[220px] items-center justify-center transition-all duration-[250ms] ease-out ${
         showCard
-          ? "translate-y-0 opacity-100"
-          : "translate-y-2 opacity-0"
+          ? "translate-y-0 scale-100 opacity-100"
+          : "translate-y-2 scale-[0.98] opacity-0"
       }`}
     >
       {rolling ? (
