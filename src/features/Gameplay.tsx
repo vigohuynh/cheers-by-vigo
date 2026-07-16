@@ -11,6 +11,10 @@ import EndScreen from "./gameplay/EndScreen";
 import PlayerCard from "./gameplay/PlayerCard";
 import QuestionCard from "./gameplay/QuestionCard";
 import TurnBadge from "./gameplay/TurnBadge";
+import {
+  CARD_ANIMATION_DURATION_MS,
+  type CardAnimationState,
+} from "./gameplay/cardAnimation";
 
 interface GameplayProps {
   session: GameSession;
@@ -31,6 +35,8 @@ export default function Gameplay({
   const [showBadge, setShowBadge] = useState(false);
   const [showCard, setShowCard] = useState(false);
   const [finished, setFinished] = useState(false);
+  const [animationState, setAnimationState] =
+    useState<CardAnimationState>("hidden");
 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -63,8 +69,20 @@ export default function Gameplay({
       setShowBadge(true);
 
       revealTimerRef.current = setTimeout(() => {
-        setCard(nextCard);
-        setShowCard(true);
+        setAnimationState("flipping");
+
+        const fadeOutTimer = setTimeout(() => {
+          setCard(nextCard);
+          setShowCard(true);
+
+          requestAnimationFrame(() => {
+            setAnimationState("visible");
+          });
+        }, CARD_ANIMATION_DURATION_MS / 2);
+
+        return () => {
+          clearTimeout(fadeOutTimer);
+        };
       }, 200);
     }, 150);
   }
@@ -75,6 +93,7 @@ export default function Gameplay({
     setRolling(true);
     setShowBadge(false);
     setShowCard(false);
+    setAnimationState("hidden");
 
     const players = session.getPlayers();
     let index = 0;
@@ -159,6 +178,7 @@ export default function Gameplay({
 
           <QuestionCard
             card={card}
+            animationState={animationState}
             rolling={rolling}
             showCard={showCard}
           />

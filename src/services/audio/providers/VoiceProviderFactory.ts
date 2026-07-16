@@ -7,10 +7,10 @@ export interface VoiceProviderFactoryOptions {
 }
 
 export class VoiceProviderFactory {
-  static create(options: VoiceProviderFactoryOptions = {}): VoiceProvider {
+  static create(): VoiceProvider {
     switch (VOICE_CONFIG.provider) {
       case 'edge':
-        return new EdgeProvider(options)
+        return new EdgeProvider()
       case 'azure':
       case 'openai':
       case 'elevenlabs':

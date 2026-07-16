@@ -31,19 +31,19 @@ export default function TurnBadge({
       label: "TRUTH",
       emoji: "🟢",
       className:
-        "bg-emerald-500/15 text-emerald-400 border border-emerald-500/30",
+        "bg-sky-500/15 text-sky-300 border border-sky-400/40",
     },
     dare: {
       label: "DARE",
       emoji: "🔴",
       className:
-        "bg-red-500/15 text-red-400 border border-red-500/30",
+        "bg-rose-500/15 text-rose-300 border border-rose-500/40",
     },
     random: {
       label: "EVENT",
       emoji: "⚡",
       className:
-        "bg-yellow-500/15 text-yellow-400 border border-yellow-500/30",
+        "bg-amber-500/15 text-amber-300 border border-amber-400/40",
     },
   } as const;
 
