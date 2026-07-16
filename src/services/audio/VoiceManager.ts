@@ -1,14 +1,11 @@
 import type { VoiceProvider } from './providers/VoiceProvider'
-
-export interface VoiceBuildRequest {
-  id: string
-  text: string
-}
+import { VoiceProviderFactory } from './providers/VoiceProviderFactory'
+import type { VoiceCard } from './types/VoiceCard'
 
 export class VoiceManager {
   private readonly provider: VoiceProvider
 
-  constructor(provider: VoiceProvider) {
+  constructor(provider: VoiceProvider = VoiceProviderFactory.create()) {
     this.provider = provider
   }
 
@@ -20,13 +17,15 @@ export class VoiceManager {
     await this.provider.dispose()
   }
 
-  async buildCard(id: string, text: string): Promise<void> {
-    await this.provider.build(id, text)
+  async buildCard(id: number, text: string): Promise<void> {
+    await this.provider.buildCard(id, text)
   }
 
-  async buildAllCards(cards: readonly VoiceBuildRequest[]): Promise<void> {
-    for (const card of cards) {
-      await this.buildCard(card.id, card.text)
-    }
+  async buildMany(cards: readonly VoiceCard[]): Promise<void> {
+    await this.provider.buildMany(cards)
+  }
+
+  getCurrentProvider(): string {
+    return this.provider.getProviderName()
   }
 }

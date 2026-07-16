@@ -1,0 +1,301 @@
+id,type,category,content
+1,truth,interaction,Ai trong bàn là người bạn nghĩ uống giỏi nhất?
+2,truth,interaction,"Nếu được miễn uống cả tối nay, bạn sẽ nhường quyền đó cho ai?"
+3,truth,interaction,Lần say gần đây nhất của bạn diễn ra ở đâu?
+4,truth,interaction,Món nhậu bạn thích nhất là gì?
+5,truth,interaction,"Nếu phải rủ một người trong bàn đi du lịch, bạn sẽ chọn ai?"
+6,truth,interaction,Ai trong bàn có gu ăn mặc đẹp nhất?
+7,truth,interaction,Theo bạn ai trong bàn quậy nhất khi có bia rượu?
+8,truth,interaction,Bạn thích nhất bộ phận nào trên cơ thể mình?
+9,truth,interaction,Lâu nhất bạn từng không tắm là bao lâu?
+10,truth,interaction,Theo bạn ai trong bàn hài hước nhất?
+11,truth,interaction,Ai trong bàn có khả năng làm leader tốt nhất?
+12,truth,interaction,"Nếu mở một quán nhậu, bạn sẽ rủ ai góp vốn?"
+13,truth,interaction,Ai trong bàn có gu âm nhạc hợp bạn nhất?
+14,truth,interaction,"Bạn thích bia, cocktail hay rượu mạnh hơn?"
+15,truth,interaction,Ai trong bàn có khả năng giữ bí mật tốt nhất?
+16,truth,interaction,Thói quen/ hành động gì ở đối phương khiến bạn lập tức say bye?
+17,truth,interaction,Ai trong bàn có nụ cười đẹp nhất?
+18,truth,interaction,"Nếu được đổi chỗ với một người ngay bây giờ, bạn sẽ chọn ai?"
+19,truth,interaction,Ai trong bàn có vẻ là người khó say nhất?
+20,truth,interaction,Bạn muốn gặp lại ai trong bàn ở buổi nhậu tiếp theo?
+21,dare,drink,Uống một nửa ly.
+22,dare,drink,Chọn một người cùng cụng ly và cả hai cùng uống.
+23,dare,drink,Uống 1 ly
+24,dare,drink,Mời cả bàn nâng ly rồi bạn uống đầu tiên.
+25,dare,drink,Để người bên phải đúc cho bạn uống.
+26,dare,funny,Nói chuyện bằng giọng em bé trong 30 giây.
+27,dare,funny,Catwalk một vòng quanh bàn.
+28,dare,funny,Bắt chước tiếng cười của người đối diện.
+29,dare,funny,Diễn tả một bộ phim để cả bàn đoán.
+30,dare,funny,Hát điệp khúc bài hát bất kỳ.
+31,dare,interaction,Hôn 1 cái ở cổ người bên phải.
+32,dare,interaction,Bắt tay với tất cả mọi người.
+33,dare,interaction,Để cả bàn đặt cho bạn một biệt danh.
+34,dare,interaction,Khen người bên trái bằng ba từ.
+35,dare,interaction,Nhìn vào mắt người đối diện trong 10 giây.
+36,dare,skinship,Khoác vai người bên cạnh trong 10 giây.
+37,dare,skinship,Hôn trán người đối diện.
+38,dare,skinship,Ôm người bạn chọn trong 5 giây.
+39,dare,skinship,Hôn lên mu... bàn tay người được chỉ định.
+40,dare,skinship,Chạm trán với người bên cạnh trong 5 giây.
+41,random,drink,Tất cả cùng uống một ly.
+42,random,drink,Người mặc áo tối màu uống.
+43,random,drink,Người đeo kính uống.
+44,random,interaction,Tất cả đổi chỗ ngồi.
+45,random,interaction,Cụng ly với người bên trái.
+46,random,funny,Cả bàn phải cười trong 5 giây.
+47,random,funny,Ai cười đầu tiên uống.
+48,random,interaction,Mọi người đổi chỗ điện thoại cho nhau trong 10 giây (không mở khóa).
+49,random,drink,Ai mặc áo sáng màu uống.
+50,random,interaction,Mỗi người nói một lời khen cho người bên trái.
+51,truth,interaction,Ai trong bàn có 'red flag' rõ nhất?
+52,truth,interaction,Ai có vibe người yêu lý tưởng nhất?
+53,truth,interaction,"Nếu phải unfollow một người trong bàn, bạn chọn ai?"
+54,truth,interaction,Ai nhìn hiền nhưng đáng nghi nhất?
+55,truth,interaction,Ai có khả năng ghost tin nhắn nhất?
+56,truth,interaction,"Nếu phải hôn ngay một người lúc này, bạn sẽ chọn ai?"
+57,truth,interaction,Ai dễ viral trên TikTok nhất?
+58,truth,interaction,Ai sẽ là người cưới sớm nhất?
+59,truth,interaction,Bạn đã từng rung động với người lớn tuổi hoặc nhỏ tuổi hơn mình rất nhiều chưa?
+60,truth,interaction,Ai là người dễ được crush nhất?
+61,truth,interaction,Ai hợp làm KOL nhất?
+62,truth,interaction,Ai có gu thời trang đỉnh nhất?
+63,truth,interaction,Ai sẽ là người quên chìa khóa khi đi chơi?
+64,truth,interaction,Ai dễ bị bắt gặp lướt TikTok lúc 3 giờ sáng nhất?
+65,truth,interaction,"Nếu lập podcast, bạn chọn ai làm host?"
+66,truth,interaction,Ai là người sống 'chữa lành' nhất?
+67,truth,interaction,Ai sẽ thắng nếu thi uống bia hôm nay?
+68,truth,interaction,Ai giữ bí mật tốt nhất?
+69,truth,interaction,Ai có khiếu hài hước tự nhiên nhất?
+70,truth,interaction,Bạn đã từng mơ thấy ai đó đang có mặt ở đây chưa?
+71,dare,drink,Uống bằng tay không thuận.
+72,dare,drink,Cụng ly với ba người rồi uống 1ly.
+73,dare,drink,Để người bên phải quyết định bạn uống đến khi nói Dừng.
+74,dare,drink,Uống đến khi người bên trái nói 'dừng'.
+75,dare,drink,Hai người được chỉ định uống chéo tay.
+76,dare,funny,Diễn cảnh tỏ tình với chiếc ghế trong 20 giây.
+77,dare,funny,Catwalk như người mẫu trên sàn diễn.
+78,dare,funny,Nói bằng giọng MC gameshow trong 30 giây.
+79,dare,funny,Giả làm người nổi tiếng để cả bàn đoán.
+80,dare,funny,Tạo dáng ảnh bìa tạp chí trong 10 giây.
+81,dare,interaction,Để cả bàn đặt biệt danh mới cho bạn.
+82,dare,interaction,Đổi chỗ với người được cả bàn chỉ định.
+83,dare,interaction,Khen người đối diện bằng 5 từ.
+84,dare,interaction,Để người bên trái chọn ảnh selfie đẹp nhất của bạn (không đăng).
+85,dare,interaction,"Chơi oẳn tù tì với người bên phải, người thua uống."
+86,dare,skinship,Ôm người được chỉ định trong 15 giây (nếu cả hai đồng ý).
+87,dare,skinship,Nắm tay người được chỉ định đến hết lượt (nếu cả hai đồng ý).
+88,dare,skinship,Khoác vai người được chỉ định và chụp một tấm ảnh (nếu đồng ý).
+89,dare,skinship,Hôn lên trán người được chỉ định (nếu cả hai đồng ý).
+90,dare,skinship,Chạm trán với người được chỉ định trong 10 giây (nếu cả hai đồng ý).
+91,random,drink,Người có pin điện thoại thấp nhất uống.
+92,random,drink,Người đến muộn nhất uống.
+93,random,drink,Người mặc nhiều màu đen nhất uống.
+94,random,interaction,Tất cả đổi chỗ ngồi theo chiều kim đồng hồ.
+95,random,interaction,Cả bàn bình chọn một người uống.
+96,random,interaction,Tất cả phải dùng tay không thuận trong lượt tiếp theo.
+97,random,funny,"Choc lét nhau trong 5 giây, ai cười phải uống."
+98,random,funny,Mỗi người nói 1 câu tiếng miền/nước khác.
+99,random,interaction,Người nhỏ tuổi nhất chọn một người cùng uống.
+100,random,drink,Tất cả cụng ly rồi uống hết.
+101,truth,interaction,Ai trong bàn có 'green flag' nhiều nhất?
+102,truth,interaction,Ai dễ khiến bạn rung động nhất nếu mới gặp hôm nay?
+103,truth,interaction,Ai có gu người yêu khó đoán nhất?
+104,truth,interaction,Ai là người có khả năng thả thính giỏi nhất?
+105,truth,interaction,"Nếu phải ghép đôi hai người trong bàn, bạn sẽ ghép ai với ai?"
+106,truth,interaction,Ai là người có nụ cười cuốn hút nhất?
+107,truth,interaction,Ai có phong cách ăn mặc hợp đi hẹn hò nhất?
+108,truth,interaction,"Khi muốn cảm thấy quyến rũ hơn, bạn thường mặc gì?"
+109,truth,interaction,Ai có ánh mắt 'nguy hiểm' nhất?
+110,truth,interaction,Ai sẽ là người chủ động nhắn tin trước sau buổi tiệc?
+111,truth,interaction,Ai có khả năng giữ bình tĩnh khi bị crush nhìn nhất?
+112,truth,interaction,Câu thả thính táo bạo nhất bạn từng dùng là gì?
+113,truth,interaction,Lần gần nhất bạn ngạc nhiên vì sự trưởng thành của chính mình là khi nào?
+114,truth,interaction,Đúng hay sai: Du lịch khiến con người trở nên tốt hơn.
+115,truth,interaction,Ai là người dễ làm người khác đỏ mặt nhất?
+116,truth,interaction,Ai có phong cách quyến rũ tự nhiên nhất?
+117,truth,interaction,"Khi ngồi trên bồn cầu, bạn thường nghĩ về điều gì?"
+118,truth,interaction,Ai có khả năng khiến người khác cười khi đang nghiêm túc nhất?
+119,truth,interaction,Ai sẽ thắng nếu thi tán tỉnh trong 30 giây?
+120,truth,interaction,"Ở thời điểm này, điều gì khiến bạn cảm thấy hào hứng nhất?"
+121,dare,drink,"Để cả bàn chọn: uống 1 ly hoặc nửa ly , bạn phải chấp nhận."
+122,dare,drink,Cụng ly với tất cả mọi người rồi uống một ly.
+123,dare,drink,Đổi ly với người bên trái trong một lượt rồi uống.
+124,dare,drink,Hai người được cả bàn chọn cùng uống chéo tay.
+125,dare,drink,"Người bên phải đếm đến 5, trong thời gian đó bạn phải uống xong 1 ly."
+126,dare,funny,Thả thính bàn chân như đang quay TikTok.
+127,dare,funny,Tạo dáng 'ảnh couple' với một cái gối hoặc balo.
+128,dare,funny,Diễn cảnh bị crush từ chối trong 20 giây.
+129,dare,funny,Nói một câu tỏ tình bằng giọng thật điện ảnh.
+130,dare,funny,Đi catwalk và tạo 3 dáng kết thúc.
+131,dare,interaction,Để cả bàn chọn một biệt danh dùng đến hết game.
+132,dare,interaction,"Nhìn vào mắt người được chỉ định trong 15 giây, ai cười trước uống."
+133,dare,interaction,Khen ba điểm bạn thích ở người đối diện.
+134,dare,interaction,"Chơi oẳn tù tì với hai người (mỗi người 3 lượt), mỗi lần thua uống một ngụm."
+135,dare,interaction,Đổi chỗ với người được bình chọn nhiều nhất.
+136,dare,skinship,"Ôm người được chỉ định trong 20 giây nếu cả hai đồng ý, nếu không uống phạt."
+137,dare,skinship,Khoác vai nhau và chụp một bức ảnh nếu cả hai đồng ý.
+138,dare,skinship,Nắm tay người được chỉ định đến hết hai lượt nếu cả hai đồng ý.
+139,dare,skinship,Để người được chỉ định tựa đầu lên vai bạn trong 10 giây nếu cả hai đồng ý.
+140,dare,skinship,Chạm mũi (nose touch) với người được chỉ định trong 5 giây nếu cả hai đồng ý.
+141,random,interaction,"Cả bàn bình chọn người có outfit đẹp nhất, người thắng chỉ định một người uống."
+142,random,drink,Người có pin điện thoại cao nhất uống.
+143,random,funny,"Trong một lượt tiếp theo, mọi người chỉ được nói bằng 3 từ mỗi lần."
+144,random,interaction,Người cao nhất uống 1 ly
+145,random,drink,Ai đang cầm điện thoại phải uống.
+146,random,interaction,Người sinh gần hôm nay nhất chọn một người cùng uống.
+147,random,funny,Tất cả tạo dáng chụp ảnh nhóm trong 5 giây.
+148,random,interaction,Hai người ngồi đối diện cùng nhau uống nửa.
+149,random,drink,Người mặc nhiều màu trắng nhất uống.
+150,random,interaction,Lượt kế tiếp người thắng oẳn tù tì được quyền chọn người bắt đầu.
+151,truth,interaction,Ai trong bàn có khả năng 'fall in love' nhanh nhất?
+152,truth,interaction,Ai dễ bị dụ tham gia trò điên nhất?
+153,truth,interaction,Ai là người có 'energy' mạnh nhất khi đi quẩy?
+154,truth,interaction,Ai có khả năng làm cả bàn cười nhiều nhất?
+155,truth,interaction,Ai đi size giầy >41 uống
+156,truth,interaction,"Những người mù đường uống 1 ly,"
+157,truth,interaction,Ai có gu chụp ảnh đẹp nhất?
+158,truth,interaction,Những ai đang dung Android thì uống.
+159,truth,interaction,Ai có khả năng biến buổi nhậu thành buổi tâm sự?
+160,truth,interaction,"Chọn ra 1 người tốt bụng nhất bàn, người đó sẽ chỉ định người uống."
+161,truth,interaction,"1-2-3 chỉ vào người đang ""sỉnh"" nhất."
+162,truth,interaction,Những ai đang tập Gym thì uống.
+163,truth,interaction,Ai có gu chọn quán nhậu tốt nhất?
+164,truth,interaction,Những ai từng bị phạt do vi pham luật giao thông thì uống.
+165,truth,interaction,Ly nào còn đầy nhất uống cạn.
+166,truth,interaction,Chọn 2 người bất kỳ và mời họ 1 ly.
+167,truth,interaction,Ai là người có ánh nhìn đáng tin nhất?
+168,truth,interaction,Ai sẽ là người nhảy sung nhất nếu có nhạc?
+169,truth,interaction,Avatar Facebook nhiều Like nhất thì uống.
+170,truth,interaction,Ai là người bạn muốn ngồi cạnh nhất trong bữa tiệc?
+171,dare,drink,Những ai từng hôn nhau nơi công cộng thì uống 1 ly.
+172,dare,drink,Ai nhỏ tuổi nhất thì uống.
+173,dare,drink,Những ai họ Nguyễn uống 1 ly.
+174,dare,drink,Người nhỏ tuổi nhất quyết định bạn uống hay miễn.
+175,dare,drink,"Team có gia đình nhỏ và team chưa có gia đình nhỏ, team nào ít hơn thì uống."
+176,dare,funny,Diễn cảnh nhận giải Oscar trong 20 giây.
+177,dare,funny,1...2...3 Ai đặt 2 tay lên đầu chậm nhất thì uống.
+178,dare,funny,"Điện thoại ai dưới 50 phần trăm thì uống,"
+179,dare,funny,Nói một câu cực 'deep' bằng giọng nghiêm túc.
+180,dare,funny,Diễn biểu cảm khi uống phải ly cực đắng.
+181,dare,interaction,Team iPhone uống 1 ly.
+182,dare,interaction,Người bên trái bạn hỏi bạn 1 câu hỏi bất kỳ. Bạn chọn trả lời hoặc uống.
+183,dare,interaction,Khen lần lượt ba người bất kỳ trong bàn.
+184,dare,interaction,Người cao nhất và người thấp nhất cùng cạn ly.
+185,dare,interaction,"Chọn 1 trong 2 phương án, phe nào ít thì uống: ""Trà Đào"" hay ""Trà Sữa"""
+186,dare,skinship,Vuốt tay rồi nắm tay người được chỉ định 10 giây nếu cả hai đồng ý.
+187,dare,interaction,"Khoác vai và cùng nói: Đêm qua em thật tuyệt vời."
+188,dare,skinship,Ôm vai chụp ảnh với người được chỉ định nếu cả hai đồng ý.
+189,dare,skinship,Chạm trán trong 10 giây nếu cả hai đồng ý.
+190,dare,skinship,Đan tay với người được chỉ định đến hết lượt nếu cả hai đồng ý.
+191,random,drink,Người có tên dài nhất uống.
+192,random,drink,"Người có ít pin nhất được miễn, người nhiều pin nhất uống."
+193,random,interaction,"Nếu cuộc đời được làm lại một lần, bạn sẽ chọn quay về khoảnh khắc nào?"
+194,random,interaction,Bắt chước một người trong phòng cho đến khi có người đoán ra.
+195,random,funny,2 người bên cạnh người bốc lá bài này phải uống
+196,random,drink,Người cầm ly bằng tay trái uống.
+197,random,interaction,Người cao nhất chọn người bắt đầu lượt tiếp theo.
+198,random,funny,Ai nhìn điện thoại đầu tiên phải uống.
+199,random,interaction,Tuyệt vời. Bạn thật may mắn. Bạn được PASS và lượt sau nếu bị uống thì bạn chỉ định ai uống thay bạn
+200,random,drink,"Chơi nối từ, người cuối cùng ""bí"" thì uống"
+201,truth,interaction,Ai trong bàn có khả năng tán đổ người khác nhanh nhất?
+202,truth,interaction,Ai có gu nhắn tin 'mập mờ' nhất?
+203,truth,interaction,"Chơi nối từ, ai thua thì uống."
+204,truth,interaction,Ai có khả năng giữ bình tĩnh khi bị trêu nhất?
+205,truth,interaction,Ai có gu chụp ảnh đôi đẹp nhất?
+206,truth,interaction,Ai là người bạn sẽ rủ đi roadtrip đầu tiên?
+207,truth,interaction,Ai dễ trở thành linh hồn của bữa tiệc nhất?
+208,truth,interaction,Ai sẽ là người chủ động xin lỗi trước?
+209,truth,interaction,Ai có phong cách sống đáng học hỏi nhất?
+210,truth,interaction,Ai có khiếu kể chuyện nhất?
+211,truth,interaction,Ai từng dùng Tinder thì uống
+212,truth,interaction,Bật đèn hay tắt đèn
+213,truth,interaction,Ai dễ được giao giữ bí mật nhất?
+214,truth,interaction,Ai lên kế hoạch chuyến đi tốt nhất?
+215,truth,interaction,Ai khiến người khác cười chỉ bằng một câu nói?
+216,truth,interaction,Vỗ mông người bên cạnh bạn
+217,truth,interaction,Ai có khả năng trở thành streamer nhất?
+218,truth,interaction,Ai là người bạn muốn ngồi nhậu thêm một vòng?
+219,truth,interaction,Nếu được chọn 1 phẩm chất của 1 người trong nhóm bạn sẽ chọn gì và của ai
+220,truth,interaction,Ai đã từng stalk người khác trên mạng xã hội thì uống
+221,dare,drink,Thẻ quyền lực- Chọn một người và được đặt ra một câu hỏi cho người đó
+222,dare,drink,Bạn sẽ làm gì khi hết giấy vệ sinh?
+223,dare,drink,"Ra ngoài sân hét lớn: ""Tui là con hêuuuu"""
+224,dare,drink,"Để cả bàn vote: uống hoặc miễn, theo đa số."
+225,dare,drink,Uống nửa ly rồi hô 'Tẹt dời!'.
+226,dare,funny,Diễn cảnh được cầu hôn trong phim.
+227,dare,funny,Quảng cáo món nhậu trên bàn trong 20 giây.
+228,dare,funny,"Bịt mắt, để mọi người đút cho bạn ăn một món và đoán đó là gì"
+229,dare,funny,Giả tiếng kêu 1 loài động vật.
+230,dare,funny,"Bịt mắt, sờ mặt mọi người và đoán xem là ai."
+231,dare,interaction,Thực hiện 20 lần squat.
+232,dare,interaction,Nói ra điểm thu hút nhất của mỗi người trong phòng theo cảm nhận của bạn.
+233,dare,interaction,Đổi chỗ với người được vote nhiều nhất.
+234,dare,interaction,Mỗi người nói một điểm họ thích ở bạn.
+235,dare,interaction,Bạn chọn hai người cụng ly với nhau.
+236,dare,skinship,Khoác vai người được chỉ định 15 giây nếu cả hai đồng ý.
+237,dare,skinship,Ôm vai chụp ảnh cùng nếu cả hai đồng ý.
+238,dare,skinship,Hun vào bụng dưới của người đối diện.
+239,dare,skinship,"Chạm trán và cùng hô ""Chụt chụt""."
+240,dare,skinship,Liếm trái tai của người đối diện.
+241,random,interaction,"Vote: Cả bàn bình chọn người có outfit đẹp nhất, người thắng chỉ định một người uống."
+242,random,interaction,King: Người vừa hoàn thành lượt được quyền chọn người chơi tiếp theo.
+243,random,interaction,Pair: Hai người ngồi đối diện phải cùng thực hiện lượt kế tiếp.
+244,random,drink,Happy Hour: Tất cả cùng uống một ngụm.
+245,random,funny,Freeze: Ai cười đầu tiên trong 10 giây phải uống.
+246,random,interaction,Ra ngoài tru lên với mặt trăng.
+247,random,interaction,Người lớn tuổi nhất chọn người mở lượt tiếp theo.
+248,random,drink,Người vừa mở điện thoại gần nhất uống.
+249,random,funny,Cả bàn chụp một ảnh nhóm với biểu cảm ngẫu nhiên.
+250,random,interaction,Mỗi người khen người bên phải một câu.
+251,truth,interaction,Ai trong bàn có khả năng tán đổ người khác nhanh nhất?
+252,truth,interaction,Ai có gu nhắn tin 'mập mờ' nhất?
+253,truth,interaction,"Chơi nối từ, ai thua thì uống."
+254,truth,interaction,Ai có khả năng giữ bình tĩnh khi bị trêu nhất?
+255,truth,interaction,Ai có gu chụp ảnh đôi đẹp nhất?
+256,truth,interaction,Ai là người bạn sẽ rủ đi roadtrip đầu tiên?
+257,truth,interaction,Ai dễ trở thành linh hồn của bữa tiệc nhất?
+258,truth,interaction,Ai sẽ là người chủ động xin lỗi trước?
+259,truth,interaction,Ai có phong cách sống đáng học hỏi nhất?
+260,truth,interaction,Ai có khiếu kể chuyện nhất?
+261,truth,interaction,Ai từng dùng Tinder thì uống
+262,truth,interaction,Bật đèn hay tắt đèn
+263,truth,interaction,Ai dễ được giao giữ bí mật nhất?
+264,truth,interaction,Ai lên kế hoạch chuyến đi tốt nhất?
+265,truth,interaction,Ai khiến người khác cười chỉ bằng một câu nói?
+266,truth,interaction,Vỗ mông người bên cạnh bạn
+267,truth,interaction,Ai có khả năng trở thành streamer nhất?
+268,truth,interaction,Ai là người bạn muốn ngồi nhậu thêm một vòng?
+269,truth,interaction,Nếu được chọn 1 phẩm chất của 1 người trong nhóm bạn sẽ chọn gì và của ai
+270,truth,interaction,Ai đã từng stalk người khác trên mạng xã hội thì uống
+271,dare,drink,Thẻ quyền lực- Chọn một người và được đặt ra một câu hỏi cho người đó
+272,dare,drink,Bạn sẽ làm gì khi hết giấy vệ sinh?
+273,dare,drink,"Ra ngoài sân hét lớn: ""Tui là con hêuuuu"""
+274,dare,drink,"Để cả bàn vote: uống hoặc miễn, theo đa số."
+275,dare,drink,Uống nửa ly rồi hô 'Tẹt dời!'.
+276,dare,funny,Diễn cảnh được cầu hôn trong phim.
+277,dare,funny,Quảng cáo món nhậu trên bàn trong 20 giây.
+278,dare,funny,"Bịt mắt, để mọi người đút cho bạn ăn một món và đoán đó là gì"
+279,dare,funny,Giả tiếng kêu 1 loài động vật.
+280,dare,funny,"Bịt mắt, sờ mặt mọi người và đoán xem là ai."
+281,dare,interaction,Thực hiện 20 lần squat.
+282,dare,interaction,Nói ra điểm thu hút nhất của mỗi người trong phòng theo cảm nhận của bạn.
+283,dare,interaction,Đổi chỗ với người được vote nhiều nhất.
+284,dare,interaction,Mỗi người nói một điểm họ thích ở bạn.
+285,dare,interaction,Bạn chọn hai người cụng ly với nhau.
+286,dare,skinship,Khoác vai người được chỉ định 15 giây nếu cả hai đồng ý.
+287,dare,skinship,Ôm vai chụp ảnh cùng nếu cả hai đồng ý.
+288,dare,skinship,Hun vào bụng dưới của người đối diện.
+289,dare,skinship,"Chạm trán và cùng hô ""Chụt chụt""."
+290,dare,skinship,Liếm trái tai của người đối diện.
+291,random,interaction,"Vote: Cả bàn bình chọn người có outfit đẹp nhất, người thắng chỉ định một người uống."
+292,random,interaction,King: Người vừa hoàn thành lượt được quyền chọn người chơi tiếp theo.
+293,random,interaction,Pair: Hai người ngồi đối diện phải cùng thực hiện lượt kế tiếp.
+294,random,drink,Happy Hour: Tất cả cùng uống một ngụm.
+295,random,funny,Freeze: Ai cười đầu tiên trong 10 giây phải uống.
+296,random,interaction,Ra ngoài tru lên với mặt trăng.
+297,random,interaction,Người lớn tuổi nhất chọn người mở lượt tiếp theo.
+298,random,drink,Người vừa mở điện thoại gần nhất uống.
+299,random,funny,Cả bàn chụp một ảnh nhóm với biểu cảm ngẫu nhiên.
+300,random,interaction,Mỗi người khen người bên phải một câu.

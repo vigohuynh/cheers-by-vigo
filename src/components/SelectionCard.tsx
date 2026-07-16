@@ -1,3 +1,5 @@
+import { SoundEffectPlayer } from "../services/audio/SoundEffectPlayer";
+
 interface SelectionCardProps {
   icon: string;
   title: string;
@@ -13,10 +15,15 @@ export default function SelectionCard({
   selected = false,
   onClick,
 }: SelectionCardProps) {
+  function handleClick() {
+    void new SoundEffectPlayer().play("click");
+    onClick();
+  }
+
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={handleClick}
       className={`
         w-full
         rounded-3xl

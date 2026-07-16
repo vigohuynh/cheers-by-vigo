@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Screen from "../components/Screen";
+import { SoundEffectPlayer } from "../services/audio/SoundEffectPlayer";
 
 interface CountdownProps {
   onFinish: () => void;
@@ -14,6 +15,7 @@ export default function Countdown({
   useEffect(() => {
     if (count === 0) {
       const timer = setTimeout(() => {
+        void new SoundEffectPlayer().play("start");
         onFinish();
       }, 500);
 
@@ -21,6 +23,7 @@ export default function Countdown({
     }
 
     const timer = setTimeout(() => {
+      void new SoundEffectPlayer().play("countdown");
       setCount((prev) => prev - 1);
     }, 1000);
 
