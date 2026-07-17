@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Button from "../components/Button";
 import Screen from "../components/Screen";
 import { GameSession } from "../engine/GameSession";
+import { AudioPlayer } from "../services/audio/AudioPlayer";
 import type { Card } from "../types/card";
 import type { TurnType } from "../types/game";
 import type { Player } from "../types/player";
@@ -10,27 +11,38 @@ import EndScreen from "./gameplay/EndScreen";
 import PlayerCard from "./gameplay/PlayerCard";
 import QuestionCard from "./gameplay/QuestionCard";
 import TurnBadge from "./gameplay/TurnBadge";
+import {
+  CARD_ANIMATION_DURATION_MS,
+  type CardAnimationState,
+} from "./gameplay/cardAnimation";
 
 interface GameplayProps {
   session: GameSession;
   onRestart: () => void;
+  voiceEnabled: boolean;
 }
 
 export default function Gameplay({
   session,
   onRestart,
+  voiceEnabled,
 }: GameplayProps) {
   const [player, setPlayer] = useState<Player | null>(null);
   const [card, setCard] = useState<Card | null>(null);
   const [turnType, setTurnType] = useState<TurnType | null>(null);
   const [round, setRound] = useState(1);
   const [rolling, setRolling] = useState(false);
-  const [showCard, setShowCard] = useState(true);
+  const [showBadge, setShowBadge] = useState(false);
+  const [showCard, setShowCard] = useState(false);
   const [finished, setFinished] = useState(false);
+  const [animationState, setAnimationState] =
+    useState<CardAnimationState>("hidden");
 
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const badgeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const revealTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const audioPlayerRef = useRef(new AudioPlayer());
 
   function finishTurn() {
     if (session.getPlayers().length === 0) {
@@ -42,22 +54,46 @@ export default function Gameplay({
     const nextTurnType = session.selectTurnType();
     const nextCard = session.drawCard();
 
+    if (!nextCard) {
+      setFinished(true);
+      setRolling(false);
+      return;
+    }
+
     setPlayer(nextPlayer);
     setTurnType(nextTurnType);
     setRound(session.getRound());
+    setRolling(false);
 
-    revealTimerRef.current = setTimeout(() => {
-      setCard(nextCard);
-      setShowCard(true);
-      setRolling(false);
-    }, 200);
+    badgeTimerRef.current = setTimeout(() => {
+      setShowBadge(true);
+
+      revealTimerRef.current = setTimeout(() => {
+        setAnimationState("flipping");
+
+        const fadeOutTimer = setTimeout(() => {
+          setCard(nextCard);
+          setShowCard(true);
+
+          requestAnimationFrame(() => {
+            setAnimationState("visible");
+          });
+        }, CARD_ANIMATION_DURATION_MS / 2);
+
+        return () => {
+          clearTimeout(fadeOutTimer);
+        };
+      }, 200);
+    }, 150);
   }
 
   function nextTurn() {
-    if (rolling || finished) return;
+    if (rolling || finished || !showCard) return;
 
     setRolling(true);
+    setShowBadge(false);
     setShowCard(false);
+    setAnimationState("hidden");
 
     const players = session.getPlayers();
     let index = 0;
@@ -86,11 +122,30 @@ export default function Gameplay({
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
       if (intervalRef.current) clearInterval(intervalRef.current);
+      if (badgeTimerRef.current) clearTimeout(badgeTimerRef.current);
       if (revealTimerRef.current) clearTimeout(revealTimerRef.current);
+      audioPlayerRef.current.stop();
     };
     // finishTurn intentionally runs once for the initial turn.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    if (!voiceEnabled) {
+      audioPlayerRef.current.stop();
+      return;
+    }
+
+    if (!card) {
+      return;
+    }
+
+    void audioPlayerRef.current
+      .play(`/audio/cards/${card.id}.mp3`)
+      .catch(() => {
+        // Fail silently when the pre-generated MP3 file is unavailable.
+      });
+  }, [card, voiceEnabled]);
 
   if (finished) {
     return <EndScreen onRestart={onRestart} />;
@@ -109,7 +164,13 @@ export default function Gameplay({
             rolling={rolling}
           />
 
-          <div className="mt-6">
+          <div
+            className={`mt-6 min-h-9 transition-all duration-200 ease-out ${
+              showBadge
+                ? "translate-y-0 opacity-100"
+                : "translate-y-1 opacity-0"
+            }`}
+          >
             <TurnBadge type={turnType} />
           </div>
 
@@ -117,13 +178,14 @@ export default function Gameplay({
 
           <QuestionCard
             card={card}
+            animationState={animationState}
             rolling={rolling}
             showCard={showCard}
           />
         </div>
 
         <div className="pt-2">
-          <Button onClick={nextTurn} disabled={rolling}>
+          <Button onClick={nextTurn} disabled={rolling || !showCard}>
             {rolling
               ? "ĐANG CHỌN..."
               : "ĐÃ XONG"}

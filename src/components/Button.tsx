@@ -1,3 +1,5 @@
+import { SoundEffectPlayer } from "../services/audio/SoundEffectPlayer";
+
 interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
@@ -22,10 +24,15 @@ export default function Button({
   const secondary =
     "border border-zinc-700 bg-zinc-900 text-white hover:bg-zinc-800";
 
+  function handleClick() {
+    void new SoundEffectPlayer().play("click");
+    onClick?.();
+  }
+
   return (
     <button
       type={type}
-      onClick={onClick}
+      onClick={handleClick}
       disabled={disabled}
       className={`${base} ${
         variant === "primary"
